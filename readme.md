@@ -1,4 +1,4 @@
-# Prueba técnica: Validación de pagos
+# Validación de excel
 
 ## Descripción
 
