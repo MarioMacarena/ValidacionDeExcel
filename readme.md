@@ -32,8 +32,8 @@ Python 3.11 o superior.
 1. Clonar el repositorio:
 
 ```bash
-git clone 
-cd 
+git clone https://github.com/MarioMacarena/ValidacionDeExcel.git
+cd ValidacionDeExcel
 ```
 
 2. Instalar las dependencias:
