@@ -19,7 +19,7 @@ if not ARCHIVO_ENTRADA.exists():
 # Leemos el archivo Excel
 df = pd.read_excel(ARCHIVO_ENTRADA)
 
-# Comprobar que existan las columnas necesarias para validar
+# Comprobamos que existan las columnas necesarias para validar
 columnas_requeridas = [
     "Beneficiario",
     "CLABE",
@@ -41,7 +41,7 @@ estados = []
 motivos_errores = []
 
 for indice, fila in df.iterrows():
-    # Validar cada campo
+    # Validamos cada campo
     error_beneficiario = validar_beneficiario(
         fila["Beneficiario"]
     )
@@ -54,7 +54,7 @@ for indice, fila in df.iterrows():
         fila["Importe"]
     )
 
-    # Reunir los errores encontrados
+    # Reunimos los errores encontrados
     errores = [
         error for error in [
             error_beneficiario,
@@ -64,7 +64,7 @@ for indice, fila in df.iterrows():
         if error is not None
     ]
 
-    # Determinar el estado del registro
+    # Determinamos el estado del registro
     if errores:
         estados.append("inválido")
         motivos_errores.append("; ".join(errores))
@@ -72,14 +72,14 @@ for indice, fila in df.iterrows():
         estados.append("válido")
         motivos_errores.append("")
 
-# Crear una copia para no modificar el DataFrame original
+# Creamos una copia para no modificar el excel original
 df_resultado = df.copy()
 
-# Agregar las columnas de validación a la copia
+# Agregamos las columnas de validación a la copia
 df_resultado["estado"] = estados
 df_resultado["motivo_error"] = motivos_errores
 
-# Guardar el resultado en un nuevo archivo
+# Guardamos el resultado en un nuevo archivo
 df_resultado.to_excel(ARCHIVO_SALIDA, index=False)
 
 # Resumen de los resultados
@@ -89,7 +89,7 @@ print(f"Registros válidos: {(df_resultado['estado'] == 'válido').sum()}")
 print(f"Registros inválidos: {(df_resultado['estado'] == 'inválido').sum()}")
 print(f"Archivo generado: {ARCHIVO_SALIDA}")
 
-# Mostrar los resultados procesados
+# Mostramos los resultados procesados
 print("\nResultados:")
 
 print(

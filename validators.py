@@ -21,7 +21,7 @@ def validar_clabe(clabe):
         except (InvalidOperation, ValueError):
             return "La CLABE no tiene un formato numérico válido"
 
-        # Revisar si es un número entero y no tiene decimales
+        # Revisamos si es un número entero y no tiene decimales
         if not numero.is_finite() or numero != numero.to_integral_value():
             return "La CLABE no debe contener decimales"
 
@@ -32,7 +32,7 @@ def validar_clabe(clabe):
     if not clabe_texto.isdigit():
         return "La CLABE contiene caracteres no numéricos"
     
-    # Recuperar el cero inicial si se perdió
+    # Recuperamos el cero inicial si se perdió
     if len(clabe_texto) == 17:
         clabe_texto = "0" + clabe_texto    
 
